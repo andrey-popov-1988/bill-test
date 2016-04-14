@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Page</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <style>
+        body {
+            text-align: center;
+            padding: 10% 20%;
+        }
+
+        .container {
+            width: 100%;
+            height: 400px;
+        }
+
+        h1 {
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .phone-input-but, .phone-key-but, .phone-back-but{
+            border: solid;
+            background: none;
+            background-color: lightblue;
+            box-shadow: 3px 3px;
+            height: 40px;
+            line-height: 30px;
+        }
+
+        .phone-input-but {
+            color: #000000;
+            text-decoration: black;
+            line-height: 40px;
+            display: inline-block;
+        }
+
+        .phone-keyboard-group {
+            padding-top: 30px;
+        }
+        .phone-key-but {
+            text-align: center;
+            line-height: 30px;
+            width: 40px;
+        }
+        .phone-back-but {
+            margin-left: 30px;
+        }
+        .phone-number {
+            height: 40px;
+            line-height: 40px;
+            border: solid 2px #000000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Insert your phone #</h1>
+    <div class="phone-input">
+        <input class="phone-number" placeholder="Phone Number" id="phone-number">
+        <a class="phone-input-but" href="/view/bill.html">Enter ></a>
+    </div>
+    <div class="phone-keyboard-group">
+        <button class="phone-key-but" value="1">1</button>
+        <button class="phone-key-but" value="2">2</button>
+        <button class="phone-key-but" value="3">3</button>
+        <button class="phone-key-but" value="4">4</button>
+        <button class="phone-key-but" value="5">5</button>
+        <button class="phone-key-but" value="6">6</button>
+        <button class="phone-key-but" value="7">7</button>
+        <button class="phone-key-but" value="8">8</button>
+        <button class="phone-key-but" value="9">9</button>
+        <button class="phone-key-but" value="0">0</button>
+
+        <button class="phone-back-but" id="phone-number-delete">< Delete</button>
+    </div>
+</div>
+<script>
+    var phone_key_buts = document.getElementsByClassName("phone-key-but");
+
+    Array.prototype.forEach.call(phone_key_buts, function(el) {
+        el.onclick = function() {
+            var cur_phone_number = document.getElementById("phone-number").value;
+
+            document.getElementById("phone-number").value = cur_phone_number + el.value;
+        }
+    });
+
+    document.getElementById("phone-number-delete").onclick = function() {
+        var cur_phone_number = document.getElementById("phone-number").value;
+        if (cur_phone_number) {
+            document.getElementById("phone-number").value = cur_phone_number.slice(0, cur_phone_number.length - 1);
+        }
+    };
+</script>
+</body>
+</html>
